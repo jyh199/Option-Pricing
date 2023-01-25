@@ -1,0 +1,6 @@
+def BS_price(S, K, T, r, sigma, div, x):
+    # x=1 means call option, x=0 means put option
+    d1 = (np.log(S/K) + (r + (0.5*sigma**2) - div)*T)/(sigma*np.sqrt(T))
+    d2 = (np.log(S/K) + (r - (0.5*sigma**2) - div)*T)/(sigma * np.sqrt(T))
+    p = (2*x-1)*S*np.exp((-1)*div*T)*norm.cdf((2*x-1)*d1, 0.0, 1.0) - (2*x-1)*K*np.exp(-r*T)*norm.cdf((2*x-1)*d2, 0.0, 1.0)
+    return p
